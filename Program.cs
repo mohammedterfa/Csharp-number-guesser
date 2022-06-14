@@ -22,7 +22,15 @@ namespace myproject
 
         Console.WriteLine("hello {0}, let`s play a game ...", inputName);
 
-        int correctNumber = 7;
+        while(true) {
+
+        
+
+        //int correctNumber = 7;
+
+        Random random = new Random();
+
+        int correctNumber = random.Next(1, 10);
 
         int guess = 0;
 
@@ -31,6 +39,16 @@ namespace myproject
         while(guess != correctNumber)
         {
             string input = Console.ReadLine();
+
+                if(!int.TryParse(input, out guess)) { 
+                    Console.ForegroundColor = ConsoleColor.Red;
+        
+                    Console.WriteLine("Please enter an actual number");
+
+                    Console.ResetColor();
+
+                    continue;
+                }
 
             guess = Int32.Parse(input);
 
@@ -50,7 +68,26 @@ namespace myproject
 
         Console.ResetColor();
 
+        // ask user to play again
+        Console.WriteLine("Play Again ? [Y or N]");
 
+        //Get answer
+        String answer = Console.ReadLine().ToUpper();
+
+        if(answer == "Y"){
+            continue;
+        }
+
+        else if(answer == "N"){
+            return;
+        }
+
+        else{
+            return;
+        }
+
+
+            }
         }
         
     }
